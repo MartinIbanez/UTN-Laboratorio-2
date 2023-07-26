@@ -1,0 +1,54 @@
+/*Hacer una función que reciba como parámetros un vector de enteros y un número entero que indica la cantidad de componentes
+ del vector, y que devuelva el valor mínimo contenido en ese vector. */
+#include <iostream>
+#include<cstdlib> ///PARA LIMPIAR LA PANTALLA
+#include <stdlib.h> ///PARA LA PAUSA.
+#include <ctime>     ///LIBRERIA PARA NUMERO ALEATORIO.
+#include <string.h> ///LIBRERIA PARA CADENA DE CARACTERES.
+#include <cstring>  ///COPIA UNA PALABRA EN OTRA.
+#include <conio.h> ///PARA USAR GETCH.
+#include <string> ///ELEMENTOS TIPO CHAR
+#include<locale.h> ///PARA CARACTERES ESPECIALES.
+#include<windows.h> ///PARA EL LOGO DE CARD JITSU Y COLOR.
+#include <clocale> ///PARA CARACTERES ESPECIALES.
+using namespace std;
+
+void inicializar(int *vecEnteros,int tam){
+
+  cout<<"Ingresar elementos del vector"<<endl;
+    for(int x=0;x<tam;x++){
+    cout<<x+1<<". ";
+    cin>>vecEnteros[x];
+    }
+}
+
+int valorMinimo(int *vecEnteros,int tam, int &minimo){
+    int i;
+    for(i=0;i<tam;i++){
+        if(i==0){
+
+           minimo=vecEnteros[i];
+        }
+        else if (minimo>vecEnteros[i]){
+
+        minimo=vecEnteros[i];
+        }
+    }
+    return minimo;
+}
+
+
+int main() {
+    int const tam=5;
+    int vecEnteros[5];
+    int minimo=0;
+
+    inicializar(vecEnteros,tam);
+    valorMinimo(vecEnteros ,tam , minimo);
+
+    cout<<endl<<endl;
+    cout<<"El valor minimo es: "<<minimo<<endl;
+
+    getch();
+    return 0;
+}
