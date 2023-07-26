@@ -1,0 +1,54 @@
+/*Hacer una función que reciba como parámetros un vector de enteros y un número entero que indica la cantidad de componentes
+del vector, y que devuelva el índice en donde se encuentra el valor máximo del vector.
+*/
+#include <iostream>
+#include<cstdlib> ///PARA LIMPIAR LA PANTALLA
+#include <stdlib.h> ///PARA LA PAUSA.
+#include <ctime>     ///LIBRERIA PARA NUMERO ALEATORIO.
+#include <string.h> ///LIBRERIA PARA CADENA DE CARACTERES.
+#include <cstring>  ///COPIA UNA PALABRA EN OTRA.
+#include <conio.h> ///PARA USAR GETCH.
+#include <string> ///ELEMENTOS TIPO CHAR
+#include<locale.h> ///PARA CARACTERES ESPECIALES.
+#include<windows.h> ///PARA EL LOGO DE CARD JITSU Y COLOR.
+#include <clocale> ///PARA CARACTERES ESPECIALES.
+
+void inicializar(int *vecEnteros,int tam);
+int valorMaximo(int *vecEnteros, int tam,int &maximo);
+using namespace std;
+
+int main() {
+    int const tam=5;
+    int vecEnteros[tam];
+    int maximo=0;
+
+    inicializar(vecEnteros,tam);
+    valorMaximo(vecEnteros,tam,maximo);
+
+
+    cout<<endl<<"El valor Maximo es: "<<maximo<<endl<<endl;
+    getch();
+    return 0;
+}
+
+void inicializar(int *vecEnteros,int tam){
+    int x;
+    cout<<"---- INGRESAR NUMEROS DEL VECTOR ----"<<endl;
+    for(x=0;x<tam;x++){
+        cout<<x+1<<". ";
+        cin>>vecEnteros[x];
+    }
+
+}
+
+int valorMaximo(int *vecEnteros, int tam,int &maximo){
+    int x;
+
+    for(x=0;x<tam;x++){
+        if (vecEnteros[x]>maximo){
+            maximo=vecEnteros[x];
+        }
+
+    }
+
+}
