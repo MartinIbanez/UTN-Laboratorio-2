@@ -1,0 +1,61 @@
+/*Hacer una función que reciba como parámetros un vector de enteros, su tamaño y un valor entero a buscar y que devuelva en qué
+ posición se encuentra el valor dentro del vector. En caso de no encontrarlo, devolver -1.*/
+#include <iostream>
+#include<cstdlib> ///PARA LIMPIAR LA PANTALLA
+#include <stdlib.h> ///PARA LA PAUSA.
+#include <ctime>     ///LIBRERIA PARA NUMERO ALEATORIO.
+#include <string.h> ///LIBRERIA PARA CADENA DE CARACTERES.
+#include <cstring>  ///COPIA UNA PALABRA EN OTRA.
+#include <conio.h> ///PARA USAR GETCH.
+#include <string> ///ELEMENTOS TIPO CHAR
+#include<locale.h> ///PARA CARACTERES ESPECIALES.
+#include<windows.h> ///PARA EL LOGO DE CARD JITSU Y COLOR.
+#include <clocale> ///PARA CARACTERES ESPECIALES.
+
+
+void inicializar(int *vecEnteros,int tam);
+int valorBuscado(int *vecEnteros, int tam,int &valor);
+using namespace std;
+
+int main() {
+    int const tam=5;
+    int vecEnteros[tam];
+    int valor=0;
+
+    inicializar(vecEnteros,tam);
+    cout<<endl<<"Ingresar el valor a buscar : ";
+    cin>>valor;
+    valorBuscado(vecEnteros,tam,valor);
+
+    getch();
+    return 0;
+}
+
+void inicializar(int *vecEnteros,int tam){
+    int x;
+    cout<<"---- INGRESAR NUMEROS DEL VECTOR ----"<<endl;
+    for(x=0;x<tam;x++){
+        cout<<x+1<<". ";
+        cin>>vecEnteros[x];
+    }
+
+}
+
+int valorBuscado(int *vecEnteros, int tam,int &valor){
+    int x;
+    bool busqueda=false;
+
+
+    for(x=0;x<tam;x++){
+        if(vecEnteros[x]==valor){
+            busqueda=true;
+            cout<<endl<<" El valor buscado se encuentra en la posicion "<<x+1<<endl;
+        }
+
+    }
+    if(busqueda==false){
+        cout<<endl<<"    - 1 ";
+    }
+
+
+}
