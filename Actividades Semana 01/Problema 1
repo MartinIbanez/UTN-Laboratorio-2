@@ -1,0 +1,113 @@
+/*Un profesor desea poder cargar la cantidad de alumnos que tiene en su materia y que un programa le solicite el Apellido y Nombres
+de cada uno de ellos así como también sus correspondientes notas finales del semestre.
+De ese procesamiento de datos desea poder conocer:
+La cantidad de alumnos que hayan obtenido un puntaje final que exceda el promedio general del curso.
+Un listado con los apellidos y nombres de aquellos alumnos cuya puntaje final exceda el promedio general de los aprobados
+(se aprueba con nota final mayor a 6). */
+#include <iostream>
+#include<cstdlib> ///PARA LIMPIAR LA PANTALLA
+#include <stdlib.h> ///PARA LA PAUSA.
+#include <ctime>     ///LIBRERIA PARA NUMERO ALEATORIO.
+#include <string.h> ///LIBRERIA PARA CADENA DE CARACTERES.
+#include <cstring>  ///COPIA UNA PALABRA EN OTRA.
+#include <conio.h> ///PARA USAR GETCH.
+#include <string> ///ELEMENTOS TIPO CHAR
+#include<locale.h> ///PARA CARACTERES ESPECIALES.
+#include<windows.h> ///PARA EL LOGO DE CARD JITSU Y COLOR.
+#include <clocale> ///PARA CARACTERES ESPECIALES.
+using namespace std;
+
+void cargarNombres(string nombre[],string apellido[],float vecNotas[],int tam);
+void mostrarVec(string nombre[],string apellido[],float vecNotas[],int tam);
+float promedioGeneral(float vecNotas[],int tam);
+int excedenPromedio(float vecNotas[],int tam,float promedio);
+float calcularPromAprobados(float vecNotas[],int tam);
+void listadoAprobados(string nombre[],string apellido[],float vecNotas[],int tam,float promedioAprobados);
+
+int main(){
+    setlocale(LC_ALL, "spanish");
+    int const tam=8;
+    float promedio=0, promedioAprobados=0;
+    int masPromedio=0;
+
+    string nombre[tam],apellido[tam];
+    float vecNotas[tam];
+    cargarNombres(nombre,apellido,vecNotas,tam);
+    mostrarVec(nombre,apellido,vecNotas,tam);
+    promedio=promedioGeneral(vecNotas,tam);
+    masPromedio=excedenPromedio(vecNotas,tam,promedio);
+    promedioAprobados=calcularPromAprobados(vecNotas,tam);
+
+
+    cout<<endl<<" Total de alumnos que superan el promedio general: "<<masPromedio<<endl;
+    listadoAprobados(nombre,apellido,vecNotas,tam,promedioAprobados);
+
+
+getch();
+    return 0;
+}
+
+void cargarNombres(string nombre[],string apellido[],float vecNotas[],int tam){
+
+    for(int x=0;x<tam;x++){
+        cout<<" Nombre del alumno: ";
+        cin>>nombre[x],
+        cout<<" Apellido del alumno: ";
+        cin>>apellido[x];
+        cout<<" Nota final del semestre: ";
+        cin>>vecNotas[x];
+        cout<<endl;
+    }
+
+}
+
+void mostrarVec(string nombre[],string apellido[],float vecNotas[],int tam){
+        for(int x=0;x<tam;x++){
+            cout<<" "<<nombre[x]<<" "<<apellido[x]<<" Nota: "<<vecNotas[x]<<endl;
+        }
+
+}
+float promedioGeneral(float vecNotas[],int tam){
+ float suma=0;
+ float promedio=0;
+    for(int x=0;x<tam;x++){
+        suma+=vecNotas[x];
+    }
+
+promedio=suma/tam;
+return promedio;
+}
+int excedenPromedio(float vecNotas[],int tam,float promedio){
+    int alumnos=0;
+    for(int x=0;x<tam;x++){
+        if(vecNotas[x]>promedio){
+            alumnos++;
+        }
+
+    }
+return alumnos;
+}
+float calcularPromAprobados(float vecNotas[],int tam){
+    float promedio=0;
+    int pos=0;
+    int aprobar=6;
+
+    for(int x=0;x<tam;x++){
+        if(vecNotas[x]>=aprobar){
+            promedio+=vecNotas[x];
+            pos++;
+        }
+    }
+    promedio=promedio/pos;
+return promedio;
+}
+void listadoAprobados(string nombre[],string apellido[],float vecNotas[],int tam,float promedioAprobados){
+        cout<<endl<<"  Alumnos con puntaje mayor al promedio general de aprobados"<<endl<<endl;
+        for(int x=0;x<tam;x++){
+            if(vecNotas[x]>promedioAprobados){
+            cout<<" "<<nombre[x]<<" "<<apellido[x]<<endl;
+            }
+        }
+
+
+}
